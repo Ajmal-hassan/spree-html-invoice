@@ -1,0 +1,41 @@
+<style>
+.packaging-slip {
+  border-collapse: collapse;
+  margin: 20px;
+}
+.packaging-slip td {
+  border: 1px solid black;
+  padding: 6px;
+}
+.packaging-slip .col1 {
+  width: 400px;
+}
+.packaging-slip .col2 {
+  width: 200px;
+}
+</style>
+<table>
+  <tr>
+    <td width="345"><%= image_tag Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg", id: "logo" %></td>
+    <td width="345">
+    <div align="right">
+      <p class="title"><%= Spree.t("#{params[:template]}.header") %></p>
+      <p class="bold"><%= Spree.t(:order_number, number: @order.number)  %></p>
+      <p class="bold"> <%=Spree.t(:order_date) %>: <%= Spree.l(@order.completed_at.to_date) if @order.completed_at %></p>
+    </div></td>
+  </tr>
+</table>
+<table class="packaging-slip">
+  <tr>
+    <td class="col1">Accounting By:</td><td class="col2">Date:</td>
+  </tr>
+    <td class="col1">Fulfilled By:</td><td class="col2">Date:</td>
+  </tr>
+    <td class="col1">Labels Created By:</td><td class="col2">Date:</td>
+  </tr>
+    <td class="col1">Prepared for Shipping By:</td><td class="col2">Date:</td>
+  </tr>
+    <td class="col1">Packed In Shipping By:</td><td class="col2">Date:</td>
+  </tr>
+  </tr>
+</table>

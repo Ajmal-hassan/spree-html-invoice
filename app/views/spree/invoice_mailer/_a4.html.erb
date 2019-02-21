@@ -2,21 +2,21 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<%= stylesheet_link_tag "admin/html-invoice.css" , media: "all" %>
-<title><%= Spree.t("#{params[:template]}.header") %></title>
+<%= stylesheet_link_tag wicked_pdf_asset_base64("admin/html-invoice.css") %>
+<title><%= Spree.t("#{@template}.header") %></title>
 </head>
 
 <body>
   <div class="a4">
     <div id="header">
-      <%= render "header_#{params[:template]}" %>
+      <%= render "header_#{@template}" %>
     </div>
     <div class="address">
       <%= render "address" %>
     </div>
     <div class="wrapper">
       <div class="line_items">
-        <%= render "line_items_#{params[:template]}" %>
+        <%= render "line_items_#{@template}" %>
       </div>
       <div class="thanks">
         <%= render "thanks" %>
@@ -24,9 +24,9 @@
       <div class="spacer"> &nbsp;
       </div>
       <div class="totals">
-        <%= render "totals_#{params[:template]}" %>
+        <%= render "totals_#{@template}" %>
       </div>
-      <% if params[:template] == "invoice" || params[:template] == "packaging_slip" %>
+      <% if @template == "invoice" || @template == "packaging_slip" %>
         <div class="states">
           <%= render "shipping_method" %>
         </div>

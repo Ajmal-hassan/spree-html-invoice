@@ -6,7 +6,9 @@ module Spree
       subject = "[INVOICE] Order #: #{@order.number}"
 
       attachments["invoice-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
-        get_invoice_content("invoice", @order)
+        get_invoice_content("invoice", @order),
+        dpi: 300,
+        :page_size => 'Letter'
       )
 
       mail(to: to_address, from: from_address, subject: subject)
@@ -18,7 +20,9 @@ module Spree
       subject = "[PACKAGING SLIP] Order #: #{@order.number}"
       
       attachments["packaging_slip-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
-        get_packaging_list_content("packaging_slip", @order)
+        get_packaging_list_content("packaging_slip", @order),
+        dpi: 300,
+        :page_size => 'Letter'
       )
       
       mail(to: to_address, from: from_address, subject: subject)

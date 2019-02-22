@@ -4,6 +4,8 @@ module SpreeHtmlInvoice
   class Engine < Rails::Engine
 
     require 'spree/core'
+    require 'wicked_pdf'
+    
     isolate_namespace Spree
     engine_name 'spree_html_invoice'
     config.autoload_paths += %W(#{config.root}/lib)

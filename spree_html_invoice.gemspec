@@ -27,4 +27,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rspec-activemodel-mocks'
   s.add_development_dependency 'sass-rails'
   s.add_development_dependency 'selenium-webdriver'
+  s.add_dependency 'wicked_pdf'
+  s.add_dependency 'wkhtmltopdf-binary'
 end

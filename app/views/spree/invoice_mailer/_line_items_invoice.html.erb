@@ -14,9 +14,10 @@
     <th align="right" bgcolor="#cccccc" style="background:#cccccc;" class="total bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:total) %></font></th>
   </tr>
   <% @order.line_items.each do |item| %>
+    <% vo = item.variant.options_text %>
     <tr data-hook="line_items_invoice">
       <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
-      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font></td>
+      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font><%= (vo.present? ? "<br/>(#{vo})".html_safe : "") %></td>
       <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price) unless @receipt%></font></td>
       <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
       <td align="right" class="cell total" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=number_to_currency(item.price * item.quantity) %></font></td>

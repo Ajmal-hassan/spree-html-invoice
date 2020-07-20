@@ -7,7 +7,9 @@ en:
 
     size: "Size"
     price: "Price"
-    order_date: "Order date"
+    order_number: "Order #: %{number}"
+    justfood_sales_order_no: "JF Order #: %{number}"
+    order_date: "Order Date"
     ship_adjustment: "Shipping Adjustments"
     shipment_amount: "Shipping Amount"
     state: "State"

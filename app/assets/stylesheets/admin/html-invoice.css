@@ -78,6 +78,9 @@ div.footer {
 .footer .cell {
   width: 220px;
 }
+.footer .organics {
+  padding-top: 10px;
+}
 
 
 .title { font-weight: bold; color: #FF9933; font-size: 18px; }

@@ -4,7 +4,7 @@ en:
   spree:
     footer_right: "Company  <br/>Phone  <br/> www "
     footer_right2: " My great company <br/>040 146 1222 <br/>  www.gohereoften.com"
-
+    footer_organics: "California Organics Products Act 2003 110840. (a) (2): Traceable Registration Number: 52375"
     size: "Size"
     price: "Price"
     order_number: "Order #: %{number}"

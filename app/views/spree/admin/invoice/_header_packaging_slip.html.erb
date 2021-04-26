@@ -1,3 +1,7 @@
+<%
+  barcode = Barby::Code128B.new(@order.number)
+  outputter = Barby::HtmlOutputter.new(barcode)
+%>
 <style>
 .packaging-slip {
   border-collapse: collapse;
@@ -13,6 +17,10 @@
 .packaging-slip .col2 {
   width: 200px;
 }
+table.barby-barcode { border-spacing: 0; width: 50%; }
+tr.barby-row {}
+td.barby-cell { width: 3px; height: 30px; }
+td.barby-cell.on { background: #000; }
 </style>
 <table>
   <tr>
@@ -21,6 +29,7 @@
     <div align="right">
       <p class="title"><%= Spree.t("#{params[:template]}.header") %></p>
       <p class="bold"><%= Spree.t(:order_number, number: @order.number)  %></p>
+      <p><%= outputter.to_html.html_safe %></p>
       <% if @order.justfood_sales_order_no %>
       <p class="bold"><%= Spree.t(:justfood_sales_order_no, number: @order.justfood_sales_order_no)  %></p>
       <% end %>

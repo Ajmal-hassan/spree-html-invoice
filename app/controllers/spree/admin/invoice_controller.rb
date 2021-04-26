@@ -1,3 +1,7 @@
+require 'barby'
+require 'barby/outputter/html_outputter'
+require 'barby/barcode/code_128'
+
 module Spree
   module Admin
     class InvoiceController < Spree::BaseController

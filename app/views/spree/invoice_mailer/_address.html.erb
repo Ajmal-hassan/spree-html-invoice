@@ -8,19 +8,19 @@
     <td height="15px" width="45%" class="billing" class="cell">
       <%= @order.bill_address.full_name %><br/>
       <%= @order.bill_address.address1 %><br/>
-      <% if !@order.bill_address.address2.empty? %><%= @order.bill_address.address2 %><br/><% end %>
+      <% if @order.bill_address.address2.present? %><%= @order.bill_address.address2 %><br/><% end %>
       <%= @order.bill_address.city %>, <%= @order.bill_address.state_text %> <%= @order.bill_address.zipcode %><br/>
       <%= @order.bill_address.country.try(:iso) %><br/>
-      <% if !@order.bill_address.phone.empty? %><%= @order.bill_address.phone %><br/><% end %>
+      <% if @order.bill_address.phone.present? %><%= @order.bill_address.phone %><br/><% end %>
     </td>
     <td width="17%"></td>
     <td height="15px" width="45%" class="shiping_header" class="cell">
       <%= @order.ship_address.full_name %><br/>
       <%= @order.ship_address.address1 %><br/>
-      <% if !@order.ship_address.address2.empty? %><%= @order.ship_address.address2 %><br/><% end %>
+      <% if @order.ship_address.address2.present? %><%= @order.ship_address.address2 %><br/><% end %>
       <%= @order.ship_address.city %>, <%= @order.ship_address.state_text %> <%= @order.ship_address.zipcode %><br/>
       <%= @order.ship_address.country.try(:iso) %><br/>
-      <% if !@order.ship_address.phone.empty? %><%= @order.ship_address.phone %><br/><% end %>
+      <% if @order.ship_address.phone.present? %><%= @order.ship_address.phone %><br/><% end %>
     </td>
   </tr>
 </table>

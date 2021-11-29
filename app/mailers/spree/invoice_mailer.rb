@@ -8,6 +8,7 @@ module Spree
       @order = order.respond_to?(:id) ? order : Spree::Order.find(order)
       to_address = Rails.configuration.x.backoffice.to_address
       subject = "[INVOICE] Order #: #{@order.number}"
+      default_options = Rails.configuration.action_mailer.default_options
 
       attachments["invoice-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
         get_invoice_content("invoice", @order),
@@ -15,13 +16,18 @@ module Spree
         :page_size => 'Letter'
       )
 
-      mail(to: to_address, from: from_address, subject: subject)
+      if default_options.nil?
+        mail(to: to_address, from: from_address, subject: subject)
+      else 
+        mail(default_options.merge(to: to_address, from: from_address, subject: subject))
+      end
     end
 
     def packaging_slip_email(order)
       @order = order.respond_to?(:id) ? order : Spree::Order.find(order)
       to_address = Rails.configuration.x.backoffice.to_address
       subject = "[PACKAGING SLIP] Order #: #{@order.number}"
+      default_options = Rails.configuration.action_mailer.default_options
       
       attachments["packaging_slip-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
         get_packaging_list_content("packaging_slip", @order),
@@ -29,7 +35,11 @@ module Spree
         :page_size => 'Letter'
       )
       
-      mail(to: to_address, from: from_address, subject: subject)
+      if default_options.nil?
+        mail(to: to_address, from: from_address, subject: subject)
+      else
+        mail(default_options.merge(to: to_address, from: from_address, subject: subject))
+      end
     end
 
     private

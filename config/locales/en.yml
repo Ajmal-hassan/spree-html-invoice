@@ -26,6 +26,10 @@ en:
       header: Packaging Slip
       print: Print Slip
       thanks: Please check the contents immediately.
+    packing_list:
+      header: Packing List
+      print: Print Packing List
+      thanks: Please check the contents immediately.
     reminder:
       header: Payment Reminder
       print: Reminder

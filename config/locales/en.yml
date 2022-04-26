@@ -18,6 +18,10 @@ en:
       header: Customer Invoice
       thanks: Thank you for your order.
       print: Print Invoice
+    commercial_invoice:
+      header: Commerical Invoice
+      thanks: Thank you for your order.
+      print: Print Commerical Invoice
     packaging_slip:
       header: Packaging Slip
       print: Print Slip

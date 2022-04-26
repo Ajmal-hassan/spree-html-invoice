@@ -26,7 +26,7 @@
       <div class="totals">
         <%= render "totals_#{params[:template]}" %>
       </div>
-      <% if params[:template] == "invoice" || params[:template] == "packaging_slip" %>
+      <% if ["invoice", "commercial_invoice", "packaging_slip"].includes?(params[:template]) %>
         <div class="states">
           <%= render "shipping_method" %>
         </div>

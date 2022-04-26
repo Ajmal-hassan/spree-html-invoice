@@ -30,9 +30,6 @@ td.barby-cell.on { background: #000; }
       <p class="title"><%= Spree.t("#{@template}.header") %></p>
       <p class="bold"><%= Spree.t(:order_number, number: @order.number)  %></p>
       <p><%= outputter.to_html.html_safe %></p>
-      <% if @order.justfood_sales_order_no %>
-      <p class="bold"><%= Spree.t(:justfood_sales_order_no, number: @order.justfood_sales_order_no)  %></p>
-      <% end %>
       <p class="bold"> <%=Spree.t(:order_date) %>: <%= Spree.l(@order.completed_at.to_date) if @order.completed_at %></p>
     </div></td>
   </tr>

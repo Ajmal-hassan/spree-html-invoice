@@ -3,18 +3,18 @@
   outputter = Barby::HtmlOutputter.new(barcode)
 %>
 <style>
-.packaging-slip {
+.pick-list {
   border-collapse: collapse;
   margin: 20px;
 }
-.packaging-slip td {
+.pick-list td {
   border: 1px solid black;
   padding: 6px;
 }
-.packaging-slip .col1 {
+.pick-list .col1 {
   width: 400px;
 }
-.packaging-slip .col2 {
+.pick-list .col2 {
   width: 200px;
 }
 table.barby-barcode { border-spacing: 0; width: 50%; }
@@ -34,7 +34,7 @@ td.barby-cell.on { background: #000; }
     </div></td>
   </tr>
 </table>
-<table class="packaging-slip">
+<table class="pick-list">
   <tr>
     <td class="col1">Accounting By:</td><td class="col2">Date:</td>
   </tr>

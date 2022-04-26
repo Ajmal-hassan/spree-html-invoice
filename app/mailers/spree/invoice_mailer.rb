@@ -23,14 +23,14 @@ module Spree
       end
     end
 
-    def packaging_slip_email(order)
+    def pick_list_email(order)
       @order = order.respond_to?(:id) ? order : Spree::Order.find(order)
       to_address = Rails.configuration.x.backoffice.to_address
-      subject = "[PACKAGING SLIP] Order #: #{@order.number}"
+      subject = "[PICK LIST] Order #: #{@order.number}"
       default_options = Rails.configuration.action_mailer.default_options
       
-      attachments["packaging_slip-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
-        get_packaging_list_content("packaging_slip", @order),
+      attachments["pick_list-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
+        get_pick_list_content("pick_list", @order),
         dpi: 300,
         :page_size => 'Letter'
       )
@@ -69,10 +69,10 @@ module Spree
       render_to_string(:template => "spree/invoice_mailer/invoice.html.erb", :layout => false)
     end
 
-    def get_packaging_list_content(template, order)
+    def get_pick_list_content(template, order)
       @template = template
       @order = order
-      render_to_string(:template => "spree/invoice_mailer/packaging_slip.html.erb", :layout => false)
+      render_to_string(:template => "spree/invoice_mailer/pick_list.html.erb", :layout => false)
     end
 
     def get_packing_list_content(template, order)

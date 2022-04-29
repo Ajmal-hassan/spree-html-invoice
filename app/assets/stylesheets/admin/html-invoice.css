@@ -87,6 +87,10 @@ div.footer {
 .bold { font-weight: bold; }
 .price { width: 80px ; }
 
+table.footer {
+  width: 620px;
+}
+
 table.address{
   width: 620px;
 }

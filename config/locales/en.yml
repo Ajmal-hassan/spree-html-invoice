@@ -11,7 +11,7 @@ en:
     order_date: "Order Date"
     ship_adjustment: "Shipping Adjustments"
     shipment_amount: "Shipping Amount"
-    state: "State"
+    payment_status: "Status"
     method: "Method"
     amount: "Amount"
     invoice:

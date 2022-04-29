@@ -1,10 +1,12 @@
 <% buttons = Spree::HtmlInvoice::Config[:print_buttons] || "invoice"
    buttons = buttons.split(",").collect{|b| b.strip } %>
 <%  buttons.each do |button| %>
-  <li>
-    <%= link_to("/admin/invoice/#{@order.number}/#{button}", target:  "_blank") do %>
-      <span class='glyphicon glyphicon-print'></span>
-      <%= Spree.t(button.to_s + ".print") %>
-    <% end %>
+  <li class="nav-item" data-hook='admin_order_tabs_print_<%= button %>_details'>
+    <%= link_to_with_icon 'printer.svg',
+      Spree.t(button.to_s + ".print"),
+      "/admin/invoice/#{@order.number}/#{button}",
+      target:  "_blank",
+      class: "#{'active' if current == button} nav-link" %>
+    </li>
   </li>
 <%end%>

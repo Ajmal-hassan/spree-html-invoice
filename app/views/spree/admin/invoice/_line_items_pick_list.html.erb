@@ -1,3 +1,14 @@
+<% @order.shipments.each do |shipment| %>
+<table cellpadding="7" class="payments heading" >
+  <tr>
+    <th align="left" class="desc bold heading"><%= Spree.t(:shipment_number) %></th>
+    <th align="left" class="desc bold heading"><%= Spree.t(:shipping_method) %></th>
+  </tr>
+    <tr >
+      <td class="cell content"><%= shipment.number %></td>
+      <td class="cell content"><%= shipment.selected_shipping_rate.name %></td>
+    </tr>
+</table>
 <table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;" >
   <colgroup>
     <col/>
@@ -9,7 +20,7 @@
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th>
     <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
   </tr>
-  <% @order.line_items.each do |item| %>
+  <% shipment.line_items.each do |item| %>
     <% vo = item.variant.options_text %>
     <tr data-hook="line_items_pick_list">
       <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
@@ -25,3 +36,5 @@
     <% end %>
   <% end %>
 </table>
+<br/>
+<% end %>

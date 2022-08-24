@@ -6,13 +6,16 @@ en:
     footer_right2: " My great company <br/>040 146 1222 <br/>  www.gohereoften.com"
     footer_organics: "California Organics Products Act 2003 110840. (a) (2): Traceable Registration Number: 52375"
     size: "Size"
+    payment_method: "Payment Method"
     price: "Price"
     order_number: "Order #: %{number}"
     order_date: "Order Date"
     ship_adjustment: "Shipping Adjustments"
     shipment_amount: "Shipping Amount"
+    shipment_number: "Shipment Number"
+    shipping_method: "Shipping Method"
+    payment_method: "Payment Method"
     payment_status: "Status"
-    method: "Method"
     amount: "Amount"
     invoice:
       header: Customer Invoice

@@ -3,7 +3,7 @@
 <% if @order.paid? %>
   <table cellpadding="7" class="payments heading" >
     <tr>
-      <th align="left" class="desc bold heading"><%= Spree.t(:method) %></th>
+      <th align="left" class="desc bold heading"><%= Spree.t(:payment_method) %></th>
       <th align="left" class="desc bold heading"><%= Spree.t(:amount) %></th>
     </tr>
     <% @order.payments.completed.each do |payment| %>

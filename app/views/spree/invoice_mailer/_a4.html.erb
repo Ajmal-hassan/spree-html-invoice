@@ -26,12 +26,7 @@
       <div class="totals">
         <%= render "totals_#{@template}" %>
       </div>
-      <% if ["invoice", "pick_list, packing_list"].include?(@template) %>
-        <div class="states">
-          <%= render "shipping_method" %>
-        </div>
-        <div class="spacer"> &nbsp;
-        </div>
+      <% if ["invoice", "commercial_invoice"].include?(@template) %>
         <div class="states">
           <%= render "state" %>
         </div>

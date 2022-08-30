@@ -8,6 +8,11 @@
       <td class="cell content"><%= shipment.number %></td>
       <td class="cell content"><%= shipment.selected_shipping_rate.name %></td>
     </tr>
+  <% if @order.special_instructions.present? %>
+    <tr >
+      <td class="cell content" colspan="2"><b>Special Instructions:</b> <%= @order.special_instructions %></td>
+    </tr>
+  <% end %>
 </table>
 <table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;" >
   <colgroup>

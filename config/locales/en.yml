@@ -10,6 +10,7 @@ en:
     price: "Price"
     order_number: "Order #: %{number}"
     order_date: "Order Date"
+    order_email: "Email"
     ship_adjustment: "Shipping Adjustments"
     shipment_amount: "Shipping Amount"
     shipment_number: "Shipment Number"

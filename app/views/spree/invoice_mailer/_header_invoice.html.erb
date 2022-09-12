@@ -6,6 +6,7 @@
       <p class="title"><%= Spree.t("#{@template}.header") %></p>
       <p class="bold"><%= Spree.t(:order_number, number: @order.number)  %></p>
       <p class="bold"> <%=Spree.t(:order_date) %>: <%= @order.completed_at.to_date if @order.completed_at %></p>
+      <p class="bold"><%= Spree.t(:order_email) %>:  <%= @order.email %></p>
     </div></td>
   </tr>
 </table>

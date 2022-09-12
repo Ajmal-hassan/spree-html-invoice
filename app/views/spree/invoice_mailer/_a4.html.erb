@@ -26,7 +26,7 @@
       <div class="totals">
         <%= render "totals_#{@template}" %>
       </div>
-      <% if ["invoice", "commercial_invoice"].include?(@template) %>
+      <% if ["invoice", "commercial_invoice", "pick_list"].include?(@template) %>
         <div class="states">
           <%= render "state" %>
         </div>

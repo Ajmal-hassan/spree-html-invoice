@@ -6,7 +6,7 @@
   </tr>
     <tr >
       <td class="cell content"><%= shipment.number %></td>
-      <td class="cell content"><%= shipment.selected_shipping_rate.name %></td>
+      <td class="cell content"><%= shipment.selected_shipping_rate&.name %></td>
     </tr>
   <% if @order.special_instructions.present? %>
     <tr >

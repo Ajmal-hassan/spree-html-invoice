@@ -5,7 +5,6 @@
     <%= link_to_with_icon 'report.svg',
       Spree.t(button.to_s + ".print"),
       "/admin/invoice/#{@order.number}/#{button}",
-      target:  "_blank",
       class: "#{'active' if current == button} nav-link" %>
   </li>
 <%end%>

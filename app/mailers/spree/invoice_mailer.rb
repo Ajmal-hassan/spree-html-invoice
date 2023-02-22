@@ -39,7 +39,7 @@ module Spree
         dpi: 300,
         :page_size => 'Letter',
         footer: {
-          left: "Order #: #{@order.number}",
+          right: "Order #: #{@order.number}",
           font_name: 'helvetica, verdana, serif',
           font_size: 6
         }
@@ -63,7 +63,7 @@ module Spree
         dpi: 300,
         :page_size => 'Letter',
         footer: {
-          left: "Order #: #{@order.number}",
+          right: "Order #: #{@order.number}",
           font_name: 'helvetica, verdana, serif',
           font_size: 6
         }

@@ -13,7 +13,12 @@ module Spree
       attachments["invoice-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
         get_invoice_content("invoice", @order),
         dpi: 300,
-        :page_size => 'Letter'
+        :page_size => 'Letter',
+        footer: {
+          right: "Order #: #{@order.number}",
+          font_name: 'helvetica, verdana, serif',
+          font_size: 6
+        }
       )
 
       if default_options.nil?
@@ -32,7 +37,12 @@ module Spree
       attachments["pick_list-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
         get_pick_list_content("pick_list", @order),
         dpi: 300,
-        :page_size => 'Letter'
+        :page_size => 'Letter',
+        footer: {
+          left: "Order #: #{@order.number}",
+          font_name: 'helvetica, verdana, serif',
+          font_size: 6
+        }
       )
       
       if default_options.nil?
@@ -51,7 +61,12 @@ module Spree
       attachments["packing_list-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
         get_packing_list_content("packing_list", @order),
         dpi: 300,
-        :page_size => 'Letter'
+        :page_size => 'Letter',
+        footer: {
+          left: "Order #: #{@order.number}",
+          font_name: 'helvetica, verdana, serif',
+          font_size: 6
+        }
       )
       
       if default_options.nil?

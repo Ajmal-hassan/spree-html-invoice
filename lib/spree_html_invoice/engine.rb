@@ -1,3 +1,5 @@
+require_relative '../spree/html_invoice_configuration'
+
 module Spree::HtmlInvoice; end
 
 module SpreeHtmlInvoice

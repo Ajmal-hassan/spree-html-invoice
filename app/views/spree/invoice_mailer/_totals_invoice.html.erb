@@ -7,7 +7,7 @@
     <td class="cel1 bold"> <%= Spree.t(:shipment_amount) %>: </td>
     <td class="cel2 cell" align="right"><%= @order.display_shipment_total.to_html %></td>
   </tr>
-  <% if @order.route_insurance_selected 
+  <% if (@order.respond_to?(:route_insurance_selected) && @order.route_insurance_selected) 
       route_insurance_total = Spree::Money.new(@order.route_insurance_price, currency: @order.currency)
   %>
     <tr>

@@ -10,7 +10,7 @@ module Spree
         @template = template
         @order = Spree::Order.find_by(number: params[:id])
         pdf = WickedPdf.new.pdf_from_string(
-          render_to_string(:template => "spree/admin/invoice/#{template}.html.erb", :layout => false),
+          render_to_string(:template => "spree/admin/invoice/#{template}", :layout => false),
           dpi: 300,
           :page_size => 'Letter',
           footer: {

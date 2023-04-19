@@ -54,6 +54,6 @@ td.barby-cell.on { background: #000; }
     <td class="col1">COA Packed By:</td><td class="col2">Date:</td>
   </tr>
 </table>
-<% if @order.request_coa %>
+<% if (@order.respond_to?(:request_coa) && @order.request_coa) %>
 <span style="font-size: 16px; font-weight: bold; color: red; margin-left: 20px;">*** COA (Certificate of Analysis) requested. ***</span><br/><br/><br/>
 <% end %>

@@ -9,7 +9,7 @@
     <% @order.payments.completed.each do |payment| %>
       <tr >
         <td class="cell content"><%= payment.payment_method.name %></td>
-        <td class="cell content"><%= payment.display_amount %></td>
+        <td class="cell content">US <%= payment.display_amount %></td>
       </tr>
     <% end %>
   </table>

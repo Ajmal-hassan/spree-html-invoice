@@ -81,6 +81,9 @@ div.footer {
 .footer .organics {
   padding-top: 10px;
 }
+.footer .manufactured {
+  padding-top: 20px;
+}
 
 
 .title { font-weight: bold; color: #FF9933; font-size: 18px; }
@@ -166,4 +169,6 @@ div.cod {
   font-weight: bold;
 }
 
-
+p.spacer {
+  margin: 5px 0px 5px;
+}

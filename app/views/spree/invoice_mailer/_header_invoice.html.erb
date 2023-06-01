@@ -1,12 +1,18 @@
 <table>
   <tr>
-    <td width="345"><%= image_tag wicked_pdf_asset_base64(Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg"), id: "logo" %></td>
+    <td width="345"><%= image_tag wicked_pdf_asset_base64(Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg"), id: "logo", style: 'height:40%; width:auto;' %>
+      <div align="left">
+        <p class="bold spacer">833 N. Elm Street</p>
+        <p class="bold spacer">Orange, CA 92867</p>
+      </div>
+    </td>
     <td width="345">
-    <div align="right">
-      <p class="title"><%= Spree.t("#{@template}.header") %></p>
-      <p class="bold"><%= Spree.t(:order_number, number: @order.number)  %></p>
-      <p class="bold"> <%=Spree.t(:order_date) %>: <%= @order.completed_at.to_date if @order.completed_at %></p>
-      <p class="bold"><%= Spree.t(:order_email) %>:  <%= @order.email %></p>
-    </div></td>
+      <div align="right">
+        <p class="title"><%= Spree.t("#{@template}.header") %></p>
+        <p class="bold spacer"><%= Spree.t(:order_number, number: @order.number)  %></p>
+        <p class="bold spacer"> <%=Spree.t(:order_date) %>: <%= @order.completed_at.to_date if @order.completed_at %></p>
+        <p class="bold spacer"><%= Spree.t(:order_email) %>:  <%= @order.email %></p>
+      </div>
+    </td>
   </tr>
 </table>

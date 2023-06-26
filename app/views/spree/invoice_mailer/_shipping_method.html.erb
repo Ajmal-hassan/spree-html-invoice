@@ -10,4 +10,9 @@
       <td class="cell content"><%= shipment.selected_shipping_rate.name %></td>
     </tr>
   <% end %>
+  <% if @order.special_instructions.present? %>
+    <tr >
+      <td class="cell content" colspan="2"><b>Special Instructions:</b> <%= @order.special_instructions %></td>
+    </tr>
+  <% end %>
 </table>

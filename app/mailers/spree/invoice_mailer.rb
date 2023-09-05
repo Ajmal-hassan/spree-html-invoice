@@ -81,19 +81,19 @@ module Spree
     def get_invoice_content(template, order)
       @template = template
       @order = order
-      render_to_string(:template => "spree/invoice_mailer/invoice.html.erb", :layout => false)
+      render_to_string(:template => "spree/invoice_mailer/invoice", formats: [:html], :layout => false)
     end
 
     def get_pick_list_content(template, order)
       @template = template
       @order = order
-      render_to_string(:template => "spree/invoice_mailer/pick_list.html.erb", :layout => false)
+      render_to_string(:template => "spree/invoice_mailer/pick_list", formats: [:html], :layout => false)
     end
 
     def get_packing_list_content(template, order)
       @template = template
       @order = order
-      render_to_string(:template => "spree/invoice_mailer/packing_list.html.erb", :layout => false)
+      render_to_string(:template => "spree/invoice_mailer/packing_list", formats: [:html], :layout => false)
     end
   end
 end

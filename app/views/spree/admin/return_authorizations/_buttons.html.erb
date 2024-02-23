@@ -1,0 +1,7 @@
+<%
+  options = {}
+  options[:no_text] = true
+  options[:data] = { action: 'print' }
+  options[:class] = 'btn btn-primary btn-sm'
+%>
+<%= link_to_with_icon('report.svg', Spree.t(:print), "/admin/orders/#{@order.number}/return_authorizations/#{return_authorization.id}/print", options) %>

@@ -1,0 +1,19 @@
+<table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;" >
+  <tr>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:return_quantity) %> </font></th>
+    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="price bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:refund_amount) %></font></th>
+  </tr>
+  <% @return_authorization.return_items.each do |return_item| %>
+    <% vo = return_item.inventory_unit.variant.options_text %>
+    <% inventory_unit = return_item.inventory_unit %>
+    <tr data-hook="line_items_invoice">
+      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= inventory_unit.variant.sku %></font></td>
+      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= inventory_unit.variant.product.fullname rescue inventory_unit.variant.product.name %></font><%= (vo.present? ? "<br/>(#{vo})".html_safe : "") %></td>
+      <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= inventory_unit.quantity %></font></td>
+      <td class="cell price" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= return_item.display_pre_tax_amount %></font></td>
+    </tr>
+  <% end %>
+</table>
+<br/>

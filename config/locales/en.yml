@@ -42,3 +42,11 @@ en:
     receipt:
       header: Receipt
       print: Receipt
+    print: Print
+    return_authorization:
+      header: Return Authorization
+    ra_number: "RA #: %{number}"
+    date: Date
+    refund_amount: Refund Amount
+    return_quantity: Return Quantity
+    total_refund: Total Refund

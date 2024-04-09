@@ -9,6 +9,7 @@ module Spree
         template = params[:template]
         @template = template
         @order = Spree::Order.find_by(number: params[:id])
+        @order_admin_path = spree.edit_admin_order_url(@order)
         pdf = WickedPdf.new.pdf_from_string(
           render_to_string(:template => "spree/admin/invoice/#{template}.html.erb", :layout => false),
           dpi: 300,

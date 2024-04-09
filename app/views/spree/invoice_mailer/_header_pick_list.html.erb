@@ -1,6 +1,17 @@
 <%
+  require "rqrcode"
+
   barcode = Barby::Code128B.new(@order.number)
   outputter = Barby::HtmlOutputter.new(barcode)
+
+  qrcode = RQRCode::QRCode.new(@order_admin_path)
+  qrcode_svg = qrcode.as_svg(
+    color: "000",
+    shape_rendering: "crispEdges",
+    module_size: 1,
+    standalone: true,
+    use_path: true
+  )
 %>
 <style>
 .pick-list {
@@ -26,6 +37,7 @@ td.barby-cell.on { background: #000; }
   <tr>
     <td width="345"><%= image_tag wicked_pdf_asset_base64(Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg"), id: "logo", style: 'height:40%; width:auto;' %>
       <div align="left">
+        <p class="qrcode-spacer"><%= qrcode_svg.html_safe %></p>
         <p class="bold spacer">833 N. Elm Street</p>
         <p class="bold spacer">Orange, CA 92867</p>
       </div>

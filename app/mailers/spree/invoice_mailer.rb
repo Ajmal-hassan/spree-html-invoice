@@ -30,12 +30,13 @@ module Spree
 
     def pick_list_email(order)
       @order = order.respond_to?(:id) ? order : Spree::Order.find(order)
+      @order_admin_path = spree.edit_admin_order_url(@order)
       to_address = Rails.configuration.x.backoffice.to_address
       subject = "[PICK LIST] Order #: #{@order.number}"
       default_options = Rails.configuration.action_mailer.default_options
       
       attachments["pick_list-#{@order.number}.pdf"] = WickedPdf.new.pdf_from_string(
-        get_pick_list_content("pick_list", @order),
+        get_pick_list_content("pick_list", @order, @order_admin_path),
         dpi: 300,
         :page_size => 'Letter',
         footer: {
@@ -84,9 +85,10 @@ module Spree
       render_to_string(:template => "spree/invoice_mailer/invoice.html.erb", :layout => false)
     end
 
-    def get_pick_list_content(template, order)
+    def get_pick_list_content(template, order, order_admin_path)
       @template = template
       @order = order
+      @order_admin_path = order_admin_path
       render_to_string(:template => "spree/invoice_mailer/pick_list.html.erb", :layout => false)
     end
 

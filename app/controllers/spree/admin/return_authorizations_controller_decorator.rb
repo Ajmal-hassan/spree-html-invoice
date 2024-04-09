@@ -12,7 +12,7 @@ module Spree
 
       def print
         pdf = WickedPdf.new.pdf_from_string(
-          render_to_string(:template => "spree/admin/return_authorizations/print.html.erb", :layout => false),
+          render_to_string(:template => "spree/admin/return_authorizations/print", :layout => false),
           dpi: 300,
           :page_size => 'Letter',
           footer: {

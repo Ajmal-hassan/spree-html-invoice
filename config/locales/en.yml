@@ -10,6 +10,7 @@ en:
     payment_method: "Payment Method"
     price: "Price"
     order_number: "Order #: %{number}"
+    po_number_template: "PO #: %{number}"
     order_date: "Order Date"
     order_email: "Email"
     ship_adjustment: "Shipping Adjustments"

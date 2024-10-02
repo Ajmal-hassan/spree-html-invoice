@@ -1,0 +1,46 @@
+<table cellpadding="7" class="heading">
+  <tr>
+    <th align="left" class="desc bold heading"><font face="Arial, Helvetica, sans-serif" size="2">Package <%= index+1 %></font></th>
+  </tr>
+</table>
+
+<table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;">
+  <colgroup>
+    <col/>
+    <col width="15%"/>
+    <col width="15%"/>
+    <col width="15%"/>
+    <col width="15%"/>
+  </colgroup>
+  <tr bgcolor="#cccccc">
+    <th align="left" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:package_name) %></font></th>
+    <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:height) %></font></th>
+    <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:length) %></font></th>
+    <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:width) %></font></th>
+    <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:weight) %></font></th>
+  </tr>
+  <tr>
+    <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= package.package_name %></font></td>
+    <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= package.height %></font></td>
+    <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= package.length %></font></td>
+    <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= package.width %></font></td>
+    <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= package.weight %></font></td>
+  </tr>
+</table>
+
+<% if package.shipperhq_package_items.present? %>
+  <table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:15px 0;">
+    <tr bgcolor="#cccccc">
+      <th align="left" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
+      <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty_packed) %></font></th>
+      <th align="center" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:weight_packed) %></font></th>
+    </tr>
+    <% package.shipperhq_package_items.each do |item| %>
+      <tr>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.sku %></font></td>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.qty_packed %></font></td>
+        <td class="cell" style="border-bottom:solid 1px #cccccc;" align="center"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.weight_packed %></font></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

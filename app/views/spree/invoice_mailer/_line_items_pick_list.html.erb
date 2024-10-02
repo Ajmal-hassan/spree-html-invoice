@@ -1,45 +1,63 @@
-<% @order.shipments.each do |shipment| %>
-<table cellpadding="7" class="payments heading" >
-  <tr>
-    <th align="left" class="desc bold heading"><%= Spree.t(:shipment_number) %></th>
-    <th align="left" class="desc bold heading"><%= Spree.t(:shipping_method) %></th>
-  </tr>
-    <tr >
-      <td class="cell content"><%= shipment.number %></td>
-      <td class="cell content"><%= shipment.selected_shipping_rate&.name %></td>
-    </tr>
-  <% if @order.special_instructions.present? %>
-    <tr >
-      <td class="cell content" colspan="2"><b>Special Instructions:</b> <%= @order.special_instructions %></td>
-    </tr>
-  <% end %>
-</table>
-<table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;" >
-  <colgroup>
-    <col/>
-    <col/>
-    <col class="qty"/>
-  </colgroup>
-  <tr>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th>
-    <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
-  </tr>
-  <% shipment.line_items.each do |item| %>
-    <% vo = item.variant.options_text %>
-    <tr data-hook="line_items_pick_list">
-      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
-      <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font><%= (vo.present? ? "<br/>(#{vo})".html_safe : "") %></td>
-      <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
-    </tr>
-    <% if item.respond_to? :discount and item.discount > 0 %>
-       <tr style="border-bottom:solid 1px #cccccc;">
-        <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
-        <td class="cell" style="border-bottom:solid 1px #cccccc;">(<font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:discount) %>)</font></td>
-        <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
+<% if @order.respond_to?(:shipperhq_packages) && @order.shipperhq_packages.present? %>
+  <% @order.shipments.each do |shipment| %>
+    <table cellpadding="7" class="payments heading" >
+      <tr>
+        <th align="left" class="desc bold heading"><%= Spree.t(:shipment_number) %></th>
+        <th align="left" class="desc bold heading"><%= Spree.t(:shipping_method) %></th>
       </tr>
-    <% end %>
+        <tr >
+          <td class="cell content"><%= shipment.number %></td>
+          <td class="cell content"><%= shipment.selected_shipping_rate&.name %></td>
+        </tr>
+    </table>
   <% end %>
-</table>
-<br/>
+  <% @order.shipperhq_packages.each_with_index do |package, index| %>
+    <%= render partial: "shipper_hq_packages_details", locals: { package: package, index: index } %>
+  <% end %>
+<% else %>
+  <% @order.shipments.each do |shipment| %>
+    <table cellpadding="7" class="payments heading" >
+      <tr>
+        <th align="left" class="desc bold heading"><%= Spree.t(:shipment_number) %></th>
+        <th align="left" class="desc bold heading"><%= Spree.t(:shipping_method) %></th>
+      </tr>
+        <tr >
+          <td class="cell content"><%= shipment.number %></td>
+          <td class="cell content"><%= shipment.selected_shipping_rate&.name %></td>
+        </tr>
+      <% if @order.special_instructions.present? %>
+        <tr >
+          <td class="cell content" colspan="2"><b>Special Instructions:</b> <%= @order.special_instructions %></td>
+        </tr>
+      <% end %>
+    </table>
+    <table width="700" cellspacing="0" cellpadding="7" border="0" class="line_items" style="border:solid 1px #cccccc; border-bottom:none; margin:30px 0;" >
+      <colgroup>
+        <col/>
+        <col/>
+        <col class="qty"/>
+      </colgroup>
+      <tr>
+        <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="sku bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:sku) %></font></th>
+        <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="desc bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:item_description) %></font></th>
+        <th align="left" bgcolor="#cccccc" style="background:#cccccc;" class="qty bold"><font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:qty) %> </font></th>
+      </tr>
+      <% shipment.line_items.each do |item| %>
+        <% vo = item.variant.options_text %>
+        <tr data-hook="line_items_pick_list">
+          <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.variant.sku %></font></td>
+          <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%= item.variant.product.fullname rescue item.variant.product.name %></font><%= (vo.present? ? "<br/>(#{vo})".html_safe : "") %></td>
+          <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2"><%=item.quantity %></font></td>
+        </tr>
+        <% if item.respond_to? :discount and item.discount > 0 %>
+           <tr style="border-bottom:solid 1px #cccccc;">
+            <td class="cell" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
+            <td class="cell" style="border-bottom:solid 1px #cccccc;">(<font face="Arial, Helvetica, sans-serif" size="2"><%= Spree.t(:discount) %>)</font></td>
+            <td class="cell qty" style="border-bottom:solid 1px #cccccc;"><font face="Arial, Helvetica, sans-serif" size="2">&nbsp;</font></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+    <br/>
+  <% end %>
 <% end %>

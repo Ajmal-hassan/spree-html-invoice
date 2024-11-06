@@ -46,6 +46,9 @@ td.barby-cell.on { background: #000; }
       <div align="right">
         <p class="title"><%= Spree.t("#{params[:template]}.header") %></p>
         <p class="bold spacer"><%= Spree.t(:order_number, number: @order.number)  %></p>
+        <% if @order.respond_to?(:netsuite_sales_order_num) && @order.netsuite_sales_order_num.present? %>
+          <p class="bold spacer"><%= Spree.t(:netsuit_sales_order_number, netsuit_number: @order.netsuite_sales_order_num)  %></p>
+        <% end %>
         <% if @order.respond_to?(:po_number) && @order.po_number.present? %>
         <p class="bold spacer"><%= Spree.t(:po_number_template, number: @order.po_number)  %></p>
         <% end %>

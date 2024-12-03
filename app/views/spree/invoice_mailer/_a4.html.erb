@@ -1,11 +1,96 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<%= stylesheet_link_tag wicked_pdf_asset_base64("admin/html-invoice.css") %>
-<title><%= Spree.t("#{@template}.header") %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title><%= Spree.t("#{@template}.header") %></title>
+  <style>
+    div.a4 {
+      width: 620px;
+      font-size: 12px;
+      font-family: helvetica, verdana, serif;
+    }
+    img#logo {
+      width: 280px;
+      padding-bottom: 12px;
+    }
+    div.header {
+      width: 620px;
+      height: 100px;
+    }
+    div.address {
+      width: 620px;
+      border-top: 1px solid grey;
+      margin-bottom: 10px;
+      padding: 6px;
+    }
+    .line_items, .payments, .reimbursement {
+      width: 620px;
+    }
+    .line_items .price, .line_items .total {
+      text-align: right;
+    }
+    .line_items .qty {
+      text-align: center;
+    }
+    div.wrapper {
+      width: 620px;
+      border-top: 1px solid grey;
+      padding: 6px;
+    }
+    div.thanks {
+      width: 620px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      line-height: 10px;
+    }
+    div.spacer {
+      width: 620px;
+    }
+    div.totals {
+      margin-bottom: 20px;
+      float: right;
+    }
+    div.states {
+      clear: both;
+      width: 620px;
+      line-height: 10px;
+    }
+    div.footer {
+      width: 620px;
+      border-top: 1px solid grey;
+      padding: 6px;
+    }
+    .footer .bold {
+      width: 100px;
+    }
+    .footer .cell {
+      width: 220px;
+    }
+    .footer .organics {
+      padding-top: 10px;
+    }
+    .footer .manufactured {
+      padding-top: 20px;
+    }
+    .title {
+      font-weight: bold;
+      color: #FF9933;
+      font-size: 18px;
+    }
+    .bold {
+      font-weight: bold;
+    }
+    .price {
+      width: 80px;
+    }
+    table.footer {
+      width: 620px;
+    }
+    table.address {
+      width: 620px;
+    }
+  </style>
 </head>
-
 <body>
   <div class="a4">
     <div id="header">
@@ -21,8 +106,7 @@
       <div class="thanks">
         <%= render "thanks" %>
       </div>
-      <div class="spacer"> &nbsp;
-      </div>
+      <div class="spacer"> &nbsp;</div>
       <div class="totals">
         <%= render "totals_#{@template}" %>
       </div>
@@ -30,8 +114,7 @@
         <div class="states">
           <%= render "state" %>
         </div>
-        <div class="spacer"> &nbsp;
-        </div>
+        <div class="spacer"> &nbsp;</div>
         <% if @order.reimbursements.reimbursed.any? %>
           <div class="refund">
             <%= render "refund" %>
@@ -45,4 +128,3 @@
   </div>
 </body>
 </html>
-

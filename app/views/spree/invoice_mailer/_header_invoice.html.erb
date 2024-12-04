@@ -1,6 +1,8 @@
 <table>
   <tr>
-    <td width="345"><%= image_tag wicked_pdf_asset_base64(Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg"), id: "logo", style: 'height:40%; width:auto;' %>
+    <td width="345">
+      <%#= image_tag wicked_pdf_asset_base64(Spree::HtmlInvoice::Config[:html_invoice_logo_path] || "store/invoice_logo.jpg"), id: "logo", style: 'height:40%; width:auto;' %>
+      <%= image_tag "https://d2bq3lbso2q31r.cloudfront.net/assets/v9/newport-logo-large-e47e66b6e2253274a314709d024190fdb541cd3de26176ba5985bb18df825988.png", id: "logo", style: 'height:40%; width:auto;' %>
       <div align="left">
         <p class="bold spacer">833 N. Elm Street</p>
         <p class="bold spacer">Orange, CA 92867</p>
@@ -10,6 +12,9 @@
       <div align="right">
         <p class="title"><%= Spree.t("#{@template}.header") %></p>
         <p class="bold spacer"><%= Spree.t(:order_number, number: @order.number)  %></p>
+        <% if @order.respond_to?(:netsuite_sales_order_num) && @order.netsuite_sales_order_num.present? %>
+          <p class="bold spacer"><%= Spree.t(:netsuit_sales_order_number, netsuit_number: @order.netsuite_sales_order_num)  %></p>
+        <% end %>
         <p class="bold spacer"> <%=Spree.t(:order_date) %>: <%= @order.completed_at.to_date if @order.completed_at %></p>
         <p class="bold spacer"><%= Spree.t(:order_email) %>:  <%= @order.email %></p>
       </div>
